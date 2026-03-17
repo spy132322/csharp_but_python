@@ -132,7 +132,7 @@
 - `__repr__`
 - `__eq__`
 
-![aboba1](/csharp_but_python/labs/lab01/images/Screenshot_20260317_102741.png)
+![aboba1](/labs/lab01/images/Screenshot_20260317_102741.png)
 ---
 
 ### Сценарий 2 — Валидация данных
@@ -145,7 +145,7 @@
 - проверки диапазонов
 - работа `try/except`
 
-![aboba1](/csharp_but_python/labs/lab01/images/Screenshot_20260317_102750.png)
+![aboba1](/labs/lab01/images/Screenshot_20260317_102750.png)
 ---
 
 ### Сценарий 3 — Бизнес-логика (покупка)
@@ -157,7 +157,7 @@
 - уменьшение `stock`
 - контроль ограничений
 
-![aboba1](/csharp_but_python/labs/lab01/images/Screenshot_20260317_102754.png)
+![aboba1](/labs/lab01/images/Screenshot_20260317_102754.png)
 ---
 
 ### Сценарий 4 — Логическое состояние
@@ -168,7 +168,7 @@
 **Что демонстрируется:**
 - зависимость поведения от состояния
 
-![aboba1](/csharp_but_python/labs/lab01/images/Screenshot_20260317_102757.png)
+![aboba1](/labs/lab01/images/Screenshot_20260317_102757.png)
 ---
 
 ### Сценарий 5 — Изменение свойств
@@ -177,5 +177,5 @@
 - Изменение скидки
 - Проверка ограничений
 
-![aboba1](/csharp_but_python/labs/lab01/images/Screenshot_20260317_102804.png)
+![aboba1](/labs/lab01/images/Screenshot_20260317_102804.png)
 ---
