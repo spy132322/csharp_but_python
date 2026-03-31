@@ -156,15 +156,15 @@
 
 **Создание коллекции, добавление объектов, вывод всех элементов, поиск по имени.**
 
-![pict](/csharp_but_python/labs/lab02/images/Screenshot_20260331_110753.png)
+![pict](/labs/lab02/images/Screenshot_20260331_110753.png)
 
 ### Scn2
 
 **Проверка ограничения на дубликаты и удаление элемента из коллекции.**
-![pict](/csharp_but_python/labs/lab02/images/Screenshot_20260331_110801.png)
+![pict](/labs/lab02/images/Screenshot_20260331_110801.png)
 
 ### Scn3
 
 **Использование индексации, сортировки, фильтрации и удаления по индексу.**
 
-![pict](/csharp_but_python/labs/lab02/images/Screenshot_20260331_111009.png)
+![pict](/labs/lab02/images/Screenshot_20260331_111009.png)
