@@ -1,5 +1,5 @@
 # lab01/model.py
-from validators import _validate_name, _validate_price, _validate_discount, _validate_stock
+from lab01.src.validators import _validate_name, _validate_price, _validate_discount, _validate_stock
 
 class Product:
     TAX_RATE = 0.20
