@@ -28,3 +28,22 @@ def _validate_stock(value):
     if value < 0:
         raise ValueError("stock must be >= 0")
     return value
+
+def _validate_number(value: object, field_name: str, *, positive: bool = False, non_negative: bool = False) -> float:
+    if not isinstance(value, (int, float)) or isinstance(value, bool):
+        raise TypeError(f"{field_name} must be numeric")
+    value = float(value)
+    if positive and value <= 0:
+        raise ValueError(f"{field_name} must be > 0")
+    if non_negative and value < 0:
+        raise ValueError(f"{field_name} must be >= 0")
+    return value
+
+def _validate_int(value: object, field_name: str, *, positive: bool = False, non_negative: bool = False) -> int:
+    if not isinstance(value, int) or isinstance(value, bool):
+        raise TypeError(f"{field_name} must be int")
+    if positive and value <= 0:
+        raise ValueError(f"{field_name} must be > 0")
+    if non_negative and value < 0:
+        raise ValueError(f"{field_name} must be >= 0")
+    return value

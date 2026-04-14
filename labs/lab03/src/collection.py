@@ -2,7 +2,8 @@ from __future__ import annotations
 
 from typing import Callable, Iterable, Iterator, Optional
 
-from lab01.src.model import Product
+from base import Product
+from models import LiquidProduct, ServiceProduct, TangibleProduct
 
 
 class ProductCatalog:
@@ -44,6 +45,9 @@ class ProductCatalog:
                 return index
         return -1
 
+    def _subset(self, predicate):
+        return self.__class__(item for item in self._items if predicate(item))
+
     def add(self, item: Product) -> None:
         item = self._validate_product(item)
         if self._find_index_by_name(item.name) != -1:
@@ -76,28 +80,39 @@ class ProductCatalog:
         key: Optional[Callable[[Product], object]] = None,
         reverse: bool = False,
     ) -> ProductCatalog:
-        if key is None:
-            key = lambda item: item.name.casefold()
-        self._items.sort(key=key, reverse=reverse) # type: ignore
+        sort_key = key or (lambda item: item.name.casefold())
+        self._items.sort(key=sort_key, reverse=reverse)
         return self
 
     def sort_by_name(self, reverse: bool = False) -> ProductCatalog:
         return self.sort(key=lambda item: item.name.casefold(), reverse=reverse)
 
     def sort_by_price(self, reverse: bool = False) -> ProductCatalog:
-        return self.sort(key=lambda item: item.price_after_discount(), reverse=reverse)
+        return self.sort(key=lambda item: item.calculate_price(), reverse=reverse)
 
     def get_active(self) -> ProductCatalog:
-        return self.__class__(item for item in self._items if item.active)
+        return self._subset(lambda item: item.active)
 
     def get_available(self) -> ProductCatalog:
-        return self.__class__(item for item in self._items if item.active and item.stock > 0)
+        return self._subset(lambda item: item.active and item.stock > 0)
 
     def get_expensive(self, min_price: float) -> ProductCatalog:
         threshold = self._validate_number(min_price, "min_price")
-        return self.__class__(
-            item for item in self._items if item.price_after_discount() >= threshold
-        )
+        return self._subset(lambda item: item.calculate_price() >= threshold)
+
+    def get_only_type(self, product_type: type[Product]) -> ProductCatalog:
+        if not isinstance(product_type, type) or not issubclass(product_type, Product):
+            raise TypeError("product_type must be Product subclass")
+        return self._subset(lambda item: isinstance(item, product_type))
+
+    def get_only_liquid(self) -> ProductCatalog:
+        return self.get_only_type(LiquidProduct)
+
+    def get_only_tangible(self) -> ProductCatalog:
+        return self.get_only_type(TangibleProduct)
+
+    def get_only_service(self) -> ProductCatalog:
+        return self.get_only_type(ServiceProduct)
 
     def __len__(self) -> int:
         return len(self._items)
