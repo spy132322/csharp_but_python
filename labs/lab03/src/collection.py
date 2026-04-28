@@ -2,8 +2,10 @@ from __future__ import annotations
 
 from typing import Callable, Iterable, Iterator, Optional
 
-from base import Product
-from models import LiquidProduct, ServiceProduct, TangibleProduct
+from lab04.src.models import Product
+from lab04.src.interfaces import Printable, Comparable
+from functools import cmp_to_key
+from .models import LiquidProduct, ServiceProduct, TangibleProduct
 
 
 class ProductCatalog:
@@ -128,3 +130,17 @@ class ProductCatalog:
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self._items!r})"
+    
+    def get_printable(self) -> "ProductCatalog":
+        return self._subset(lambda item: isinstance(item, Printable))
+
+
+    def get_comparable(self) -> "ProductCatalog":
+        return self._subset(lambda item: isinstance(item, Comparable))
+    
+    def sort_by_comparable(self, reverse: bool = False) -> "ProductCatalog":
+        self._items.sort(
+            key=cmp_to_key(lambda a, b: a.compare_to(b)),
+            reverse=reverse
+        )
+        return self

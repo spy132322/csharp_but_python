@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from lab01.src.validators import _validate_discount, _validate_name, _validate_price, _validate_stock, _validate_int
-
+from lab04.src.interfaces import Printable, Comparable
 
 class Product:
     __slots__ = ("_name", "_price", "_discount", "_stock", "_active")

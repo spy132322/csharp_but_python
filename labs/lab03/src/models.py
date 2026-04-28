@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from base import Product
+from .base import Product
 from lab01.src.validators import _validate_number
 
 
