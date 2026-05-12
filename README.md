@@ -8,3 +8,4 @@ MISIS Second Semester Repo
 [LAB03](/labs/lab03/README.md)
 [LAB04](/labs/lab04/README.md)
 [LAB05](/labs/lab05/README.md)
+[LAB06](/labs/lab06/README.md)
